@@ -1,0 +1,121 @@
+.exportButtons {
+    display: flex;
+    flex-direction: row;
+}
+
+.exportButtons form {
+    margin: 0 10px;
+}
+
+form.customDatabaseConfigForm table.form-table, form.customDatabaseConfigForm p.submit {
+    height:0;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    margin: 0;
+    transition: .35s linear all;
+}
+
+form.customDatabaseConfigForm.customDatabaseAdded table.form-table, form.customDatabaseConfigForm.customDatabaseAdded p.submit {
+    height:auto;
+    padding: 10px;
+    /* margin: 20px; */
+    overflow: auto;
+}
+
+
+/* DATABASE EXPLORER */
+
+.wrap.databaseExplorer {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    height: 100%;
+}
+.wrap.databaseExplorer .content {
+    display: flex;
+    flex-direction: row;
+    max-height: 850px;
+    overflow: hidden;
+}
+
+.wrap.databaseExplorer > h2 {
+    margin-bottom: 10px;
+}
+.wrap.databaseExplorer .tableNamesList {
+    max-width: 20%;
+    background: white;
+    overflow-y: scroll;
+}
+
+.wrap.databaseExplorer .tableNamesList .table_name {
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f1f1;
+    border-left: 0px solid transparent;
+    transition: 0.25s ease all;
+}
+
+.wrap.databaseExplorer .tableNamesList .table_name:hover {
+    background: #006799;
+    color: white;
+    border-left: 3px solid #0085ba;
+    border-bottom: 1px solid  #0085ba;
+}
+
+
+.tableColumns {
+    display: flex;
+    color: white;
+    background: #636363;
+    width: fit-content;
+}
+
+.tableContent {
+    max-width: 80%;
+    width: 100%;
+    overflow: scroll;
+    background: #d6d6d6;
+}
+
+.tableSingleColumn {
+    padding: 5px 10px;
+    border: 1px solid #f1f1f1;
+    min-width: 150px;
+    display: inline-block;
+}
+
+.tableSingleColumn:hover {
+    background: lightgray;
+    color: black;
+    cursor: pointer;
+}
+
+
+.singleRow {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+}
+
+.tableSingleColumnValue {
+    padding: 5px 10px;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid #f1f1f1;
+}
+
+.singleRow:hover {
+    background: #e8e8e8;
+}
+
+.singleRow .tableSingleColumnValue:hover {
+    background: white;
+    color: black;
+}
+/* END DATABASE EXPLORER */
