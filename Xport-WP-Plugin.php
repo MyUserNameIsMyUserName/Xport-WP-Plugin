@@ -144,33 +144,42 @@ class Xport_DB_Plugin {
                 <div class="tableContent">
                     <div class="tableColumns"></div>
                     <div class="tableValues"></div>
+                    <div class="loading_custom_tables">
+                        <div class="circle">
+                            <div class="innerCircle"></div>
+                        </div>
+                        <div class="loadingInfo">
+                            <p></p>
+                            <span class="loadingLine"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <script>
                 $('.table_name').on('click',function(){
-                    $('.tableColumns').html('')
-                    //alert(this.id);
+                    $('.loading_custom_tables').fadeIn();
+                    $('.table_name').removeClass("current_open_table");
+                    $(this).addClass("current_open_table");
+                    $('.tableColumns').html('');
                     jQuery.ajax({
                         type: "POST",
                         url: ajaxurl,
                         data: { action: 'show_table_content' , xtable_name: this.id },
                     }).done(function( data ) {
-                        //console.log( "Data Saved: " + JSON.parse(data) );
+                        $('.loadingInfo p').html('Sending request for table columns....');
                         data.forEach(function(item, index, arr){
-                            console.log( item );
                             $helper = $('.tableColumns').html();
                             $helper += '<div class="tableSingleColumn" >'+item.Field+'</div>';
                             $('.tableColumns').html($helper);
                         });
                     });
-                    $('.tableValues').html('')
-                    //alert(this.id);
+                    $('.tableValues').html('');
                     jQuery.ajax({
                         type: "POST",
                         url: ajaxurl,
                         data: { action: 'show_table_values' , xtable_name: this.id },
                     }).done(function( data ) {
-                        //console.log( "Data Saved: " + JSON.parse(data) );
+                        $('.loadingInfo p').html('Sending request for table values....');
                         data.forEach(function(item, index, arr){
                             $helper = $('.tableValues').html();
                             $helper += '<div class="singleRow">';
@@ -179,9 +188,9 @@ class Xport_DB_Plugin {
                                 $helper += '<div class="tableSingleColumnValue" >'+item[x]+'</div>';
                                 $('.tableValues').html($helper);
                             };
-                            console.log( item );
                             $helper += '</div>';
                         });
+                        $('.loading_custom_tables').fadeOut();
                     });
                 });
             </script>
